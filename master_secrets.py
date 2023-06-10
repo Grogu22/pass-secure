@@ -1,1 +1,1 @@
-master_password = 'abcde'
+master_password = '<YOUR-PASSWORD>'
