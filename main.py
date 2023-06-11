@@ -9,7 +9,7 @@ from getpass import getpass
 help = """
 table has schema: (url, username, email, password_dict)
 Generate password:
-    use arg -pgen and -l with maximum length of password
+    use arg -pgen with maximum length of password as param
 Deleting:
     For deleting records from table use -d and params -e, -u, -us
 Inserting:
@@ -34,6 +34,15 @@ if len(sys.argv) == 1:
     print("Enter some fucking arguments..")
     sys.exit()
 
+if sys.argv[1] == '-pgen':
+    if int(sys.argv[2]) > 4:
+        print(f"Strong password of {sys.argv[2]} is : {strongPass(int(sys.argv[2]))}")
+        sys.exit()
+    else:
+        print("Strong password must be greater than length 4 !!")
+        print("Exiting..")
+        sys.exit()
+
 for i in range(3):
     password = getpass("Enter master password :")
     if password == master_password:
@@ -46,20 +55,16 @@ for i in range(3):
     else:
         print("Wrong password. Try again.")
 
-if sys.argv[1] == '-pgen':
-    if int(sys.argv[2]) > 4:
-        print(f"Strong password of {sys.argv[2]} is : {strongPass(int(sys.argv[2]))}")
-    else:
-        print("Strong password must be greater than length 4 !!")
-        print("Exiting..")
-        sys.exit()
+print("You will have to enter a key that encrypts the message, remember it!")
+key = getpass("Enter the key : ")
+
 if sys.argv[1] == '-i':
     if len(sys.argv) != 8:
         print("Enter the correct number of arguments.You should enter all fields!!")
         print("Exiting..")
         sys.exit()
     db_pass = getpass("Enter password for this record:")
-    db_pass = encdec.encrypt(db_pass, master_password)
+    db_pass = encdec.encrypt(db_pass, key)
     for i in range(2,len(sys.argv), 2):
         if sys.argv[i] not in argdict:
             print("Entered wrong argument")
@@ -82,7 +87,7 @@ if sys.argv[1] == '-upd':
         q+= f"{argdict[i]} LIKE '%{querydict[i]}%' "
     if sys.argv[2] == '-p':
         db_pass = getpass("Enter password for this record : ")
-        db_pass = encdec.encrypt(db_pass, master_password)
+        db_pass = encdec.encrypt(db_pass, key)
         query = f"UPDATE {dbs.table_name}  SET {argdict['-p']}='{json.dumps(db_pass)}' where "
         query += q
     elif sys.argv[2] == '-e':
@@ -101,7 +106,7 @@ if sys.argv[1] == '-upd':
 
 if sys.argv[1] == '-q':
     if len(sys.argv) == 2:
-        dbs.show_records(f"SELECT * FROM {dbs.table_name}")
+        dbs.show_records(f"SELECT * FROM {dbs.table_name}",key=key)
         sys.exit()
     for i in range(2,len(sys.argv), 2):
         if sys.argv[i] not in argdict:
@@ -115,7 +120,7 @@ if sys.argv[1] == '-q':
         q+= f"{argdict[i]} LIKE '%{querydict[i]}%' "
     query = f"SELECT * FROM {dbs.table_name} WHERE "
     query+= q
-    dbs.show_records(query=query)
+    dbs.show_records(query=query, key=key)
 
 if sys.argv[1] == '-d':
     for i in range(2,len(sys.argv), 2):
