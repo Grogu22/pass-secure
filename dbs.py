@@ -3,9 +3,10 @@ import json
 from encdec import decrypt
 from master_secrets import master_password
 
-conn = sqlite3.connect("pmanager.db")
+conn = sqlite3.connect('<YOUR-DATABASE.db>')
+#conn = sqlite3.connect("pmanager.db")
 cur = conn.cursor()
-table_name = 'password_details'
+table_name = '<YOUR-TABLE-NAME>'
 
 # created table
 if cur.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}'") is None:
