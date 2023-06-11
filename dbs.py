@@ -22,9 +22,9 @@ def update_values(query):
         cur.execute(query)
         conn.commit()
 
-def show_records(query):
+def show_records(query, key):
     if cur.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}'"):
         for i in cur.execute(query).fetchall():
             for j in i[:-1]: print(j,end=' | ')
-            print(decrypt(json.loads(i[-1]), master_password).decode())
+            print(decrypt(json.loads(i[-1]), key).decode())
         conn.commit()
