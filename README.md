@@ -40,3 +40,18 @@
   - ```-e``` : email
 - The program will ask for ```password``` and ```key```
 ![12](https://github.com/Grogu22/pass-secure/assets/83173038/96069aff-19d1-4638-9dfb-0eb11c3969bb)
+![12](https://github.com/Grogu22/pass-secure/assets/83173038/3ba2608c-7490-41ed-81a6-0a5688240568)
+_Fig : We can see that value is updated_
+
+#### Delete values :
+- run ```python main.py -d <params>```
+- Delete records according to params specified
+- params : 
+  - ```-u``` : url
+  - ```-us``` : username
+  - ```-e``` : email
+- The program will ask for ```password```
+![12](https://github.com/Grogu22/pass-secure/assets/83173038/26967363-21ca-431c-8874-30122550657a)
+![12](https://github.com/Grogu22/pass-secure/assets/83173038/76216887-9e64-499b-ba12-6993c140b637)
+_Fig : We can see that the record has been deleted_
+
