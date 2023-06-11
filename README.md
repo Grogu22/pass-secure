@@ -4,5 +4,5 @@
 - Also includes a **strong password generator**
 ## Getting started
 - clone this repository
-- installl dependencies
+- installl dependencies using ```pip install -r requirements.txt```
 - run ```main.py```
