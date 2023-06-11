@@ -98,8 +98,6 @@ if sys.argv[1] == '-upd':
         query = f"UPDATE {dbs.table_name}  SET {argdict['-us']}='{username}' where "
         query += q
     dbs.update_values(query=query)
-    # print(querydict)
-    # print(query)
 
 if sys.argv[1] == '-q':
     if len(sys.argv) == 2:
@@ -118,8 +116,6 @@ if sys.argv[1] == '-q':
     query = f"SELECT * FROM {dbs.table_name} WHERE "
     query+= q
     dbs.show_records(query=query)
-    # print(querydict)
-    # print(query)
 
 if sys.argv[1] == '-d':
     for i in range(2,len(sys.argv), 2):
