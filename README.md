@@ -25,3 +25,18 @@
 - using just ```-q``` and no params will simply show all records for a particular key(you can view all records in one run if all of them have the same key)
 - The program will ask for ```password``` and ```key```
 ![12](https://github.com/Grogu22/pass-secure/assets/83173038/51a9ac6c-fc04-4f4a-bb84-aec46a2af365)
+
+#### Update values :
+- run ```python main.py -upd <updatearg> <params>```
+- update arguments :
+  - add only one argument among the following
+  - ```-u``` : url
+  - ```-us``` : username
+  - ```-e``` : email
+  - ```-p``` : password
+- params : 
+  - ```-u``` : url
+  - ```-us``` : username
+  - ```-e``` : email
+- The program will ask for ```password``` and ```key```
+![12](https://github.com/Grogu22/pass-secure/assets/83173038/96069aff-19d1-4638-9dfb-0eb11c3969bb)
