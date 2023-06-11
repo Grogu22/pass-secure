@@ -55,3 +55,8 @@ _Fig : We can see that value is updated_
 ![12](https://github.com/Grogu22/pass-secure/assets/83173038/76216887-9e64-499b-ba12-6993c140b637)
 _Fig : We can see that the record has been deleted_
 
+#### Generate Password :
+- run ```python main.py -pgen <max_len>```
+- ```<max_len>``` : maximum length of password to be generated
+![12](https://github.com/Grogu22/pass-secure/assets/83173038/8d0f1ace-886a-4a0e-ba42-e60f54936171)
+_Fig : Password of Length 8 is generated_
